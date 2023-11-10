@@ -2,7 +2,7 @@
 
 in this group project we will create a simple UNIX
 command that interprete in C programming language
-
+my name is mike
 
 Resources
 Read or watch:
