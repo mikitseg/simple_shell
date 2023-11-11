@@ -1,6 +1,6 @@
-# 0x16. C - Simple shell
+0x16. C - Simple shell
 
-in this group project we will create a simple UNIX
+In this group project we will create a simple UNIX
 command that interprete in C programming language
 my name is mike
 
