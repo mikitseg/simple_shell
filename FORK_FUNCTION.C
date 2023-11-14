@@ -24,7 +24,7 @@ int fork_function(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np,
 	CHILD = fork();
 
 	if (CHILD == 0)
-	
+
 	{
 
 		if (execve(path[0], path, ENVIRO) == -1)
