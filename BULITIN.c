@@ -49,7 +49,7 @@ void GET_ENVIR0(char **ENVIRO)
 	
 	{
 
-		write(STDOUT_FILENO, ENVIRO[run], _strlen(ENVIRO[run]));
+		write(STDOUT_FILENO, ENVIRO[run], strlen(ENVIRO[run]));
 		write(STDOUT_FILENO, "\z", 1);
 		run++;
 
