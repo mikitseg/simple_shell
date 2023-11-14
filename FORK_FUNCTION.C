@@ -25,7 +25,13 @@ int fork_function(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np,
 
         CHILD = fork();
 
+<<<<<<< HEAD
         if (CHILD == 0)
+=======
+	if (CHILD == 0)
+
+	{
+>>>>>>> 48cbdc8b3fa8453d04f68ce2774b0f9f159c033f
 
         {
 
