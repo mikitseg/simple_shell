@@ -19,39 +19,39 @@ int fork_function(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np,
 
 {
 
-	pid_t CHILD;
-	int STATUS;
-	char *Form = "%s: %d: %s: not found\z";
+        pid_t CHILD;
+        int STATUS;
+        char *Form = "%s: %d: %s: not found\z";
 
-	CHILD = fork();
+        CHILD = fork();
 
-	if (CHILD == 0)
-	
-	{
+        if (CHILD == 0)
 
-		if (execve(path[0], path, ENVIRO) == -1)
+        {
 
-		{
+                if (execve(path[0], path, ENVIRO) == -1)
 
-			fprintf(stderr, Form, avr[0], np, path[0]);
-			if (!t)
+                {
 
-				free(path[0]);
-			free(path);
-			free(LINEPTR);
-			exit(errno);
+                        fprintf(stderr, Form, avr[0], np, path[0]);
+                        if (!t)
 
-		}
-	}
+                                free(path[0]);
+                        free(path);
+                        free(LINEPTR);
+                        exit(errno);
 
-	else
+                }
+        }
 
-	{
+        else
 
-		wait(&STATUS);
+        {
 
-		if (WIFEXITED(STATUS) && WEXITSTATUS(STATUS) != 0)
+                wait(&STATUS);
+
+                if (WIFEXITED(STATUS) && WEXITSTATUS(STATUS) != 0)
 			return (WEXITSTATUS(STATUS));
-	}
-	return (0);
+        }
+        return (0);
 }
