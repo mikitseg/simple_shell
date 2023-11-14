@@ -32,14 +32,14 @@ void close_command(char **ARGS, char *LINEPR, int CLOSE)
 }
 
 /**
- *GET_ENVIR0 - FUNCTION TO GET ALL  ENVIRO
+ *GET_ENVIRO - FUNCTION TO GET ALL  ENVIRO
  *
  *@ENVIRO: ENVIROMENT
  *
  *Return: 0
  */
 
-void GET_ENVIR0(char **ENVIRO)
+void GET_ENVIRO(char **ENVIRO)
 
 {
 	size_t run = 0;

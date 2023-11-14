@@ -33,7 +33,7 @@ int main(int QW, char **avr, char **ENVIRO)
 			else
 			{
 				z = NEW_PATH(&USER_COMMANDS[0], ENVIRO);
-				EXIT = fork_function(USER_COMMANDS, avr, ENVIRO,
+				EXIT = FORK_FUNCTION(USER_COMMANDS, avr, ENVIRO,
 					GET_COMMAND, PATH_VALUE, z);
 				if(z == 0)
 					free(USER_COMMANDS[0]);

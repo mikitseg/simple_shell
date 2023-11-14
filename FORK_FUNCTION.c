@@ -2,7 +2,7 @@
 
 
 /**
- * fork_function - FUNCTION THAT CREAT A FORK
+ * FORK_FUNCTION - FUNCTION THAT CREAT A FORK
  *
  *@path: COMMAND AND VALUE PATH
  *@avr: HAS THE NAME OF THE PROGRAM
@@ -15,12 +15,12 @@
  */
 
 
-int fork_function(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np, int t)
+int FORK_FUNCTION(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np, int t)
 
 {
 	pid_t CHILD;
 	int STATUS;
-	char *Form = "%s: %d: %s: not found\z";
+	char *Form = "%s: %d: %s: not found\n";
 
 	CHILD = fork();
 
@@ -48,7 +48,7 @@ int fork_function(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np,
 
 		wait(&STATUS);
 
-		if (WIFEXITED(STATUS) && WEXITSTATUS(STATUS) != 0;
+		if (WIFEXITED(STATUS) && WEXITSTATUS(STATUS) != 0);
 				return (WEXITSTATUS(STATUS));
 				}
 				return (0);

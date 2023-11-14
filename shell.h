@@ -21,8 +21,7 @@ void GET_ENVIRO(char **ENVIRO);
 
 char **GET_TOKEN(char *LINEPTR);
 void close_command(char **ARGS, char *LINEPR, int CLOSE);
-int fork_function(char **path, char **avr,
-		char **ENVIRO, char *LINEPTR, int np, int t);
+int FORK_FUNCTION(char **path, char **avr, char **ENVIRO, char *LINEPTR, int np, int t);
 char *TOKEN_STR(char *STR, const char *DELIMA);
 
 int STRCOMP(char *strlen, char *strle);
