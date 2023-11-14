@@ -16,8 +16,7 @@ int NEW_PATH(char **path, char **envir)
 
 	if (stat(*path, &status_line_ptr) == 0)
 		return (-1);
-
-	PATH_REL = path_get(envir);
+PATH_REL = path_get(envir);
 
 	if (!PATH_REL)
 		return (-1);
@@ -25,18 +24,14 @@ int NEW_PATH(char **path, char **envir)
 	TOKEN = TOKEN_STR(PATH_REL, ":");
 	COMMANDS = STRLENG(*path);
 	while (TOKEN)
-
 	{
 		PATH_VALUE = STRLENG(TOKEN);
 		PATH_ABS = malloc(sizeof(char) * (PATH_VALUE + COMMANDS + 2));
-
 		if (!PATH_ABS)
-
 		{
 			free(PATH_REL);
 			return (-1);
 		}
-
 		PATH_ABS = COPY_STR(PATH_ABS, TOKEN);
 		STRNCAT_S(PATH_ABS, "/");
 		STRNCAT_S(PATH_ABS, *path);
@@ -52,7 +47,6 @@ int NEW_PATH(char **path, char **envir)
 		free(PATH_ABS);
 		TOKEN = TOKEN_STR(NULL, ":");
 	}
-
 	free(PATH_REL);
 	return (-1);
 }

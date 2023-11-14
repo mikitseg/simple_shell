@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- *STRCAT_S - COPY STRINGS TO ANOTHEER STRINGS.
-
+ *STRNCAT_S - COPY STRINGS TO ANOTHEER STRINGS.
+ *
  *@DRIVE: characters
  *@SRC: characters
- 
+ *
  *Return: DRIVE
  */
 
@@ -30,14 +30,14 @@ char *STRNCAT_S(char *DRIVE, char *SRC)
 
 /**
  * STRCOMP - COMPARE THE VALUES OF G STRING
- * 
+ *
  * @strlen: CHARACTER
  * @strle: CHARACTER
- * 
-AOA * Return: 0
+ *
+ * Return: 0
  */
 
-int STRCOMP(char *strlen, char *strle) 
+int STRCOMP(char *strlen, char *strle)
 
 {
 	int G;
@@ -51,14 +51,14 @@ int STRCOMP(char *strlen, char *strle)
 }
 
 /**
- * strlen - COPIES THE STRING PINTED TO BY BY SRC INTO DRIVE
- * 
+ * STRLENG - COPIES THE STRING PINTED TO BY BY SRC INTO DRIVE
+ *
  * @T: A POINTER
- * 
+ *
  * Return: CHAR POINTER TO THE DRIVE
  */
 
-int strlen(char *T)
+int STRLENG(char *T)
 {
 	int QW = 0;
 
@@ -71,22 +71,20 @@ int strlen(char *T)
 }
 
 /**
- *_str -  FUNCTION THAT COMPARES THE TWO STRINGS.
-
+ *STRNCMP -  FUNCTION THAT COMPARES THE TWO STRINGS.
  *@strlen: STRING ONE
  *@strle: STRING TWO
  *@z: NUMBERS OF THE CHARACTERS
-
  * Return: THE DIFERENCE
  */
 
-size_t _strncmp(char *strlen, char *strle, size_t z)
+size_t STRNCMP(char *strlen, char *strle, size_t z)
 {
-	size_t w, z;
+	size_t w, Q;
 
-	for (z = 0; strlen[z] != '\0' && z < z; z++)
+	for (Q = 0; strlen[Q] != '\0' && Q < z; Q++)
 	{
-		w = strlen[z] - strle[z];
+		w = strlen[Q] - strle[Q];
 
 		if (w != 0)
 		{
@@ -97,15 +95,15 @@ size_t _strncmp(char *strlen, char *strle, size_t z)
 }
 
 /**
- * _copystr - COPIES THE STRING POINTED TO BY SRC INTO DRIVE
- * 
+ * COPY_STR - COPIES THE STRING POINTED TO BY SRC INTO DRIVE
+ *
  * @DRIVE: THE DESTINATION OF THE FILE
  * @SRC: SOURCES OF THE COPY
  *
  * Return: CHAR POINTERS TO  DRIVE
  */
 
-char *_copystr(char *DRIVE, char *SRC)
+char *COPY_STR(char *DRIVE, char *SRC)
 {
 	int w = 0;
 
