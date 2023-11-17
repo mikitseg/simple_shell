@@ -1,4 +1,4 @@
-#include "shell.d"
+#include "shell.h"
 
 /**
 * HSH - A FUCTION THAT is the main functon loop
@@ -34,12 +34,12 @@ int HSH(Information_t *Aastu, char **aver)
 	}
 	_hist_WRITE(Aastu);
 	INFO_FREE(Aastu, 1);
-	if (!INTER_ACTI(Aastu) && Aastu->STATUS)
-		exit(Aastu->STATUS);
+	if (!INTER_ACTI(Aastu) && Aastu->stat)
+		exit(Aastu->stat);
 	if (RB == -2)
 	{
 		if (Aastu->EXIT_ERROR_NUM == -1)
-			exit(Aastu->STATUS);
+			exit(Aastu->stat);
 		exit(Aastu->EXIT_ERROR_NUM);
 	}
 	return (RB);
@@ -70,11 +70,11 @@ int CAPTURE_BUILTIN(Information_t *Aastu)
 		{NULL, NULL}
 	};
 
-	for (k = 0; built_intb[k].flag; k++)
-		if (STR_CMP(Aastu->argv[0], built_intb[k].flag) == 0)
+	for (k = 0; built_intb[k].FLAG; k++)
+		if (STR_CMP(Aastu->argv[0], built_intb[k].FLAG) == 0)
 		{
 			Aastu->ERROR_Count++;
-			birr = built_intb[k].function(Aastu);
+			birr = built_intb[k].FUNCTION(Aastu);
 			break;
 		}
 	return (birr);
@@ -106,7 +106,7 @@ void CAPTURE_cmd(Information_t *Aastu)
 	if (!d)
 		return;
 
-	PATH = PATHS_FIND(Aastu, GET_ENVIRO(Aastu, "PATH="), Aastu->argv[0]);
+	PATH = PATHS_FIND(Aastu, GET_ENVIROment(Aastu, "PATH="), Aastu->argv[0]);
 
 	if (PATH)
 	{
@@ -115,12 +115,12 @@ void CAPTURE_cmd(Information_t *Aastu)
 	}
 	else
 	{
-		if ((INTER_ACTI(Aastu) || GET_ENVIRO(Aastu, "PATH=")
+		if ((INTER_ACTI(Aastu) || GET_ENVIROment(Aastu, "PATH=")
 					|| Aastu->argv[0][0] == '/') && IS_cmd(Aastu, Aastu->argv[0]))
 			cmd_FORKS(Aastu);
 		else if (*(Aastu->arg) != '\n')
 		{
-			Aastu->STATUS = 127;
+			Aastu->stat = 127;
 			ERR_display(Aastu, "not found\n");
 		}
 	}
@@ -160,11 +160,11 @@ void cmd_FORKS(Information_t *Aastu)
 	}
 	else
 	{
-		wait(&(Aastu->STATUS));
-		if (WIFEXITED(Aastu->STATUS))
+		wait(&(Aastu->stat));
+		if (WIFEXITED(Aastu->stat))
 		{
-			Aastu->STATUS = WEXITSTATUS(Aastu->STATUS);
-			if (Aastu->STATUS == 126)
+			Aastu->stat = WEXITSTATUS(Aastu->stat);
+			if (Aastu->stat == 126)
 				ERR_display(Aastu, "Permission denied\n");
 		}
 	}

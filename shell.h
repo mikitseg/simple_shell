@@ -12,7 +12,7 @@
 #include <string.h>
 #include <sys/types.h>
 
-extern char **ENVIRONM;
+extern char **environ;
 
 /**
 * struct List_Str - Is A STRUCTURE for singly linked list
@@ -24,9 +24,9 @@ extern char **ENVIRONM;
 
 typedef struct List_Str
 {
-	int NUM;
+	int Number;
 	char *STRING;
-	struct List_Str *NEXT;
+	struct List_Str *next;
 } list_t;
 
 /**
@@ -46,7 +46,7 @@ typedef struct List_Str
 *@HEIST: REFERS TO THE HISTORY node
 *@ALIAS: REFERS TO the ALIAS node
 *@ENV_UPDATE: APPLYS WHEN THE ENVIRONMENT IS UPDATED.
-*@STATUS: IS RETURN STATUS of executed COMMAND LAST.
+*@stat: IS RETURN STATUS of executed COMMAND LAST.
 *@cmd_BUFFER: IS ADDRESS OF POINTER to cmd_BUFFER.
 *@cmd_BUFFER_TYPE: CMD_type ||, &&, ;
 *@READ_mn: USED to READ line input
@@ -55,13 +55,13 @@ typedef struct List_Str
 
 typedef struct information_pass
 {
-	
+
 	list_t *ENV_LOC;
 	char **ENVIRONM;
 	list_t *HEIST;
 	list_t *ALIAS;
 	int ENV_UPDATE;
-	int STATUS;
+	int stat;
 	char *arg;
 	char **argv;
 	char *PATH;
@@ -85,9 +85,9 @@ typedef struct information_pass
 
 typedef struct BUILT_IN
 {
+	char *FLAG;
 	int (*FUNCTION)(Information_t *);
 
-	char *FLAG;
 } builtin_t;
 
 /*GET_LINE.c */
@@ -177,7 +177,7 @@ void CHAIN_WCHECK(Information_t *, char *, size_t *, size_t, size_t);
 /*ENVIRONMENT.c */
 int SET_ENVIRO(Information_t *);
 int ENVIRO(Information_t *);
-char *GET_ENVIRO(Information_t *, const char *);
+char *GET_ENVIROment(Information_t *, const char *);
 int ENV_POPUL(Information_t *);
 int UNSSET_ENVIRO(Information_t *);
 

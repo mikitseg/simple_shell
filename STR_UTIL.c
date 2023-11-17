@@ -2,7 +2,7 @@
 
 /**
  * STR_CPY - A Function That Copies A String
- * 
+ *
  * @Dests: Destination
  * @SOURCE: Soources
  *
@@ -25,7 +25,7 @@ char *STR_CPY(char *Dests, char *SOURCE)
 
 /**
  * STR_DUP - Duplicates The Strings
- * 
+ *
  * @STR_replace: Strings
  *
  * Return: Pointer To Duplicates The String
@@ -50,7 +50,7 @@ char *STR_DUP(const char *STR_replace)
 
 /**
  * W_PUTS - Prints The String
- * 
+ *
  * @STR_replace: String
  *
  * Return: Void
@@ -72,7 +72,7 @@ void W_PUTS(char *STR_replace)
 
 /**
  * W_PUTchar - Prints The Character To STDOUT
- * 
+ *
  * @O: The Characters
  *
  * Return: 1 On Success , 0 On Failure

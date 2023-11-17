@@ -55,14 +55,15 @@ int WIs_chain(Information_t *aastu, char *BUFFER, size_t *Pass)
 *Return: Nothing
 */
 
-void CHAIN_WCHECK(Information_t *aastu, char *BUFFER, size_t *Pass, size_t Q, size_t LENGTH)
+void CHAIN_WCHECK(Information_t *aastu, char *BUFFER,
+			size_t *Pass, size_t Q, size_t LENGTH)
 {
 	size_t P = *Pass;
 
 	if (aastu->cmd_BUFFER_TYPE == 2)
 
 	{
-		if (aastu->STATUS)
+		if (aastu->stat)
 		{
 			BUFFER[Q] = 0;
 			P = LENGTH;
@@ -70,7 +71,7 @@ void CHAIN_WCHECK(Information_t *aastu, char *BUFFER, size_t *Pass, size_t Q, si
 	}
 	if (aastu->cmd_BUFFER_TYPE == 1)
 	{
-		if (!aastu->STATUS)
+		if (!aastu->stat)
 		{
 			BUFFER[Q] = 0;
 			P = LENGTH;
@@ -92,7 +93,7 @@ int Walias_Replace(Information_t *aastu)
 {
 	list_t *Nodes;
 	int Q;
-	char *Pass; 
+	char *Pass;
 
 	for (Q = 0; Q < 10; Q++)
 
@@ -102,7 +103,7 @@ int Walias_Replace(Information_t *aastu)
 		if (!Nodes)
 			return (0);
 		free(aastu->argv[0]);
-		Pass = Wstrn_chr(Nodes->str, '=');
+		Pass = Wstrn_chr(Nodes->STRING, '=');
 		if (!Pass)
 			return (0);
 		Pass = STR_DUP(Pass + 1);
@@ -138,7 +139,7 @@ int WVAR_REPLACE(Information_t *aastu)
 
 		{
 			STR_REPLACE(&(aastu->argv[Q]),
-					STR_DUP(NUM_conversion(aastu->STATUS, 10, 0)));
+					STR_DUP(NUM_conversion(aastu->stat, 10, 0)));
 			continue;
 		}
 
@@ -154,7 +155,7 @@ int WVAR_REPLACE(Information_t *aastu)
 
 		{
 			STR_REPLACE(&(aastu->argv[Q]),
-					STR_DUP(Wstrn_chr(Nodes->str, '=') + 1));
+					STR_DUP(Wstrn_chr(Nodes->STRING, '=') + 1));
 			continue;
 		}
 		STR_REPLACE(&aastu->argv[Q], STR_DUP(""));

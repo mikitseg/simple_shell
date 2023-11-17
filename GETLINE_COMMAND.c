@@ -125,35 +125,35 @@ ssize_t READ_BUFF(Information_t *aastu, char *BUFFER, size_t *q)
 
 int GET_LINE(Information_t *aastu, char **PTR, size_t *LENGTH)
 {
-	size_t r;
+	size_t W;
 	static char BUFFER[1024];
 	char *U = NULL, *Bnew = NULL, *g;
-	static size_t q, LENGTH;
+	static size_t q, LEN;
 	ssize_t r = 0, h = 0;
 
 	U = *PTR;
 	if (U && LENGTH)
 		h = *LENGTH;
-	if (q == LENGTH)
-		q = LENGTH = 0;
+	if (q == LEN)
+		q = LEN = 0;
 
-	r = READ_BUFF(aastu, BUFFER, &LENGTH);
-	if (r == -1 || (r == 0 && LENGTH == 0))
+	r = READ_BUFF(aastu, BUFFER, &LEN);
+	if (r == -1 || (r == 0 && LEN == 0))
 		return (-1);
 
 	g = Wstrn_chr(BUFFER + q, '\n');
-	r = g ? 1 + (unsigned int)(g - BUFFER) : LENGTH;
-	Bnew = REALLOC(U, h, h ? h + r : r + 1);
+	W = g ? 1 + (unsigned int)(g - BUFFER) : LEN;
+	Bnew = REALLOC(U, h, h ? h + W : W + 1);
 	if (!Bnew)
 		return (U ? free(U), -1 : -1);
 
 	if (h)
-		WSTRN_CAT(Bnew, BUFFER + q, r - q);
+		WSTRN_CAT(Bnew, BUFFER + q, W - q);
 	else
-		VSTRN_CPY(Bnew, BUFFER + q, r - q + 1);
+		VSTRN_CPY(Bnew, BUFFER + q, W - q + 1);
 
-	h += r - q;
-	q = r;
+	h += W - q;
+	q = W;
 	U = Bnew;
 
 	if (LENGTH)

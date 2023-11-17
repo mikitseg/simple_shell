@@ -1,10 +1,11 @@
 #include "shell.h"
 
+
 /**
  * ENVIRO - PRINTS The  current Environment
- * 
+ *
  * @AASTU: STRUCT Parameters
- * 
+ *
  * Return: ALWAYS 0
  */
 int ENVIRO(Information_t *AASTU)
@@ -14,21 +15,21 @@ int ENVIRO(Information_t *AASTU)
 }
 
 /**
- * GET_ENVIRO - GETS the variable Environment Values
- * 
+ * GET_ENVIROment - GETS the variable Environment Values
+ *
  * @AASTU: STRUCT Parameters
  * @Name: IT'S The Name Of Environment Variable
  *
  * Return: The Values
  */
-char *GET_ENVIRO(Information_t *AASTU, const char *Name)
+char *GET_ENVIROment(Information_t *AASTU, const char *Name)
 {
 	list_t *NODES = AASTU->ENV_LOC;
 	char *q;
 
 	while (NODES)
 	{
-		q = START_WITH(NODES->str, Name);
+		q = START_WITH(NODES->STRING, Name);
 		if (q && *q)
 			return (q);
 		NODES = NODES->next;
@@ -38,9 +39,9 @@ char *GET_ENVIRO(Information_t *AASTU, const char *Name)
 
 /**
  * SET_ENVIRO - SET THE New Environmet Variable, Modify Existing One
- * 
+ *
  * @AASTU: Struct Parameters
- * 
+ *
  * Return: ALWAYS 0
  */
 
@@ -60,9 +61,9 @@ int SET_ENVIRO(Information_t *AASTU)
 
 /**
  * UNSSET_ENVIRO - UNSETS the enviromet variable
- * 
+ *
  * @AASTU: STRUCT Parameters
- * 
+ *
  * Return: ALWAYS 0
  */
 int UNSSET_ENVIRO(Information_t *AASTU)
@@ -74,7 +75,7 @@ int UNSSET_ENVIRO(Information_t *AASTU)
 		W_PUTS("very few arguements.\n");
 		return (1);
 	}
-	for (U = 1; U <= AASTU->argc; U++)
+	for (U = 1; AASTU->argc >= U; U++)
 		_UNSET_ENVIRO(AASTU, AASTU->argv[U]);
 
 	return (0);
@@ -82,9 +83,9 @@ int UNSSET_ENVIRO(Information_t *AASTU)
 
 /**
  * ENV_POPUL - USED for Population Of the Linked List
- * 
+ *
  * @AASTU: STRUCT Parameters
- * 
+ *
  * Return: ALWAYS 0
  */
 int ENV_POPUL(Information_t *AASTU)
@@ -92,8 +93,8 @@ int ENV_POPUL(Information_t *AASTU)
 	list_t *NODES = NULL;
 	size_t U;
 
-	for (U = 0; ENVIRONM[U]; U++)
-		NODEADD_ATEND(&NODES, ENVIRONM[U], 0);
+	for (U = 0; environ[U]; U++)
+		NODEADD_ATEND(&NODES, environ[U], 0);
 	AASTU->ENV_LOC = NODES;
 	return (0);
 }

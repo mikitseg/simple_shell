@@ -2,9 +2,9 @@
 
 /**
  * err_watoi - Changes The String To Entigers
- * 
+ *
  * @l: The STRING To Be converted
- * 
+ *
  * Return: THE Converted Entiger, 0 IF string does not
  * CONTAIN numbers AND -1 on the error.
  */
@@ -32,10 +32,10 @@ l++;
 
 /**
  * ERR_display - ERROR MESSAGE is printed
- * 
+ *
  * @aastu: STRUCT Parameter
  * @STRING: A STRING With specific types of error
- * 
+ *
  * Return: THE Converted Entiger, 0 IF STRING does not
  * CONTAIN number AND -1 ON Error.
  */
@@ -52,7 +52,7 @@ void ERR_display(Information_t *aastu, char *STRING)
 
 /**
  * S_Print - PRINTs decimal Numbers.
- * 
+ *
  * @Inputs: is the INPUTS
  * @ud: THE FILE desctiptor
  *
@@ -93,7 +93,7 @@ int S_Print(int Inputs, int ud)
 
 /**
  * NUM_conversion - PERFORMS THE Number of conversion
- * 
+ *
  * @N: THE Number
  * @Ba: THE Base
  * @FLAG: Flags of the argument
@@ -129,7 +129,7 @@ char *NUM_conversion(long int N, int Ba, int FLAG)
 
 /**
  * COMMENT_REMOVE - IT Replaces this  '#' With'\0'
- * 
+ *
  * @BUFFER: ADDRESS OF The string to Be modify.
  *
  * Return: 0;
@@ -137,14 +137,16 @@ char *NUM_conversion(long int N, int Ba, int FLAG)
 void COMMENT_REMOVE(char *BUFFER)
 {
 	int Indexs;
-	
+
 	Indexs = 0;
-while (BUFFER[Indexs] != '\0') {
-    if (BUFFER[Indexs] == '#' && (!Indexs || BUFFER[Indexs - 1] == ' ')) {
-        BUFFER[Indexs] = '\0';
-        break;
-    }
-    Indexs++;
+	while (BUFFER[Indexs] != '\0')
+{
+	if (BUFFER[Indexs] == '#' && (!Indexs || BUFFER[Indexs - 1] == ' '))
+	{
+	BUFFER[Indexs] = '\0';
+	break;
+	}
+	Indexs++;
 }
 
 }

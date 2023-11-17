@@ -2,7 +2,7 @@
 
 /**
 * IS_cmd - USED TO DETERMINE IF the command is excutable
-
+*
 * @aastu: STRUCT parameteres
 * @Paths: Paths
 *
@@ -11,10 +11,10 @@
 
 int IS_cmd(Information_t *aastu, char *Paths)
 {
-	struct STATUS ds;
+	struct stat ds;
 
 	(void)aastu;
-	if (!Paths || STATUS(Paths, &ds))
+	if (!Paths ||stat(Paths, &ds))
 		return (0);
 
 	if (ds.st_mode & S_IFREG)
@@ -26,7 +26,7 @@ int IS_cmd(Information_t *aastu, char *Paths)
 
 /**
 * _char_VDUP - USED FOR character duplication
-
+*
 * @PATHSTR: THE STRING USED FOR THE Paths
 * @Initials: THE Initial indexs
 * @FINALS: Final Indexs
@@ -48,7 +48,7 @@ char *_char_VDUP(char *PATHSTR, int Initials, int FINALS)
 
 /**
 * PATHS_FIND - FINDS THE COMMAND in the PATH string
-
+*
 * @aastu: THE struct PARAMETERE
 * @PATHSTR: the Paths STRING
 * @CMD: COMMAND TO finds

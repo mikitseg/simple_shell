@@ -2,7 +2,7 @@
 
 /**
  * GET_hist_FILES - GETS THE HISTORY FILE
- * 
+ *
  * @aastu: PARAMETERS STRUCT
  *
  * Return: ALLOCATED STRING CONTAINING HISTORY FILE
@@ -12,7 +12,7 @@ char *GET_hist_FILES(Information_t *aastu)
 {
 	char *BUFFER, *DIRE;
 
-	DIRE = GET_ENVIRO(aastu, "HOME=");
+	DIRE = GET_ENVIROment(aastu, "HOME=");
 	if (!DIRE)
 		return (NULL);
 	BUFFER = malloc(sizeof(char) * (STR_LENG(DIRE) +
@@ -31,7 +31,7 @@ STR_LENG(".simple_shell_history"
 /**
  * _hist_WRITE - CREATES afile or appends on it
  * If It Exist
- * 
+ *
  * @aastu: STRUCT Parameter
  *
  * Return: 1 on SUCCESS, -1 ON Failure
@@ -52,7 +52,7 @@ int _hist_WRITE(Information_t *aastu)
 		return (-1);
 	for (Nodes = aastu->HEIST; Nodes; Nodes = Nodes->next)
 	{
-		PUT_SUNM(Nodes->str, O);
+		PUT_SUNM(Nodes->STRING, O);
 		PUT_NUM('\n', O);
 	}
 	PUT_NUM(-1, O);
@@ -62,7 +62,7 @@ int _hist_WRITE(Information_t *aastu)
 
 /**
  * _hist_READ - A Function THAT READ the historys
- * 
+ *
  * @aastu: STRUCT parameters
  *
  * Return: THE History Count, 0 OTHERWISE
@@ -70,7 +70,7 @@ int _hist_WRITE(Information_t *aastu)
 int _hist_READ(Information_t *aastu)
 {
 	char *BUFFER = NULL, *oname = GET_hist_FILES(aastu);
-	struct STATUS FR;
+	struct stat FR;
 	ssize_t O, LEN, f_size = 0;
 	int L, LASTS = 0, LINE_Count = 0;
 
@@ -93,7 +93,7 @@ int _hist_READ(Information_t *aastu)
 	if (LEN <= 0)
 		return (free(BUFFER), 0);
 	close(O);
-	for (L = 0; L < f_size; L++)
+	for (L = 0; f_size > L; L++)
 		if (BUFFER[L] == '\n')
 		{
 			BUFFER[L] = 0;
@@ -112,7 +112,7 @@ int _hist_READ(Information_t *aastu)
 
 /**
  * _Vhist_listbuild - ADDS AN ENTRY TO history linked lists
- * 
+ *
  *  @aastu: STRUCT Parameters
  *  @BUFFER: BUFFER
  *  @LINE_Count: History LINE count
@@ -134,7 +134,7 @@ int _Vhist_listbuild(Information_t *aastu, char *BUFFER, int LINE_Count)
 
 /**
  * _hist_RE_NUM - A FUNCTION THAT renumber a history linked list
- * 
+ *
  * @aastu: STRUCT Parameters
  *
  * Return: THE New history Count
@@ -145,9 +145,9 @@ int _hist_RE_NUM(Information_t *aastu)
 	list_t *Nodes = aastu->HEIST;
 int L = 0;
 
-for (; Nodes; Nodes = Nodes->next)
+	for (; Nodes; Nodes = Nodes->next)
 {
-    Nodes->Number = L++;
+	Nodes->Number = L++;
 }
 
 return (aastu->HEIST_NUM_count = L);

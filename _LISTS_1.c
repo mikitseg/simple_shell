@@ -2,7 +2,7 @@
 
 /**
 * LIST_LENG - USED TO FIND length of the list
-
+*
 * @FIRST: POINTER TO the FIRST Nodes
 *
 * Return: LIST Size
@@ -22,7 +22,7 @@ size_t LIST_LENG(const list_t *FIRST)
 
 /**
 * LIST_STRINGS - Changes the LIST TO String
-
+*
 * @FIRST: pointer to FIRST Nodes
 *
 * Return: STRINGS which type is  ARRAY
@@ -61,7 +61,7 @@ char **LIST_STRINGS(list_t *FIRST)
 
 /**
 * LIST_PRINTS - A FUCNTION THAT PRINTSelementsof the list
-
+*
 * @FIRST: IS A Pointer TO FIRST Nodes
 *
 * Return: LIST SIZE
@@ -85,7 +85,7 @@ size_t LIST_PRINTS(const list_t *FIRST)
 
 /**
 * _Nodes_bgin_WITH - USED TO return STRING WHICH BEGIN WITH PREfix
-
+*
 * @Nodes: Pointer TO THE Nodes LIST
 * @PREfix: THE STRING To be matched
 * @T: NEXT CHARACTER AFTER THE PREfix
@@ -109,7 +109,7 @@ list_t *_Nodes_bgin_WITH(list_t *Nodes, char *PREfix, char T)
 
 /**
 * RETRIEVE_NODE_AT_indexs - retrieve INDEX OF Nodes
-
+*
 * @FIRST: pointer to  FIRST
 * @Nodes: Nodes Pointer
 *
@@ -122,7 +122,7 @@ ssize_t RETRIEVE_NODE_AT_indexs(list_t *FIRST, list_t *Nodes)
 
 	while (FIRST)
 	{
-		if (FIRST == Nodes)
+		if (Nodes == FIRST)
 			return (O);
 		FIRST = FIRST->next;
 		O++;

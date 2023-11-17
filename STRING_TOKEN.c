@@ -2,7 +2,7 @@
 
 /**
  * STR_LENG - determines the LENGTH of the STRING
- * 
+ *
  * @O: The STRINGS
  *
  * Return: Length Of The String
@@ -22,7 +22,7 @@ int STR_LENG(char *O)
 
 /**
  * STR_CMP - Compares The Strings
- * 
+ *
  * @S1: First String
  * @S2: Second String
  *
@@ -48,7 +48,7 @@ int STR_CMP(char *S1, char *S2)
 
 /**
  * START_WITH - CHECKS IF PIN STARTS WITH Pile
- * 
+ *
  * @Pile: THE string
  * @PIN: Substring to Find
  *
@@ -58,22 +58,22 @@ int STR_CMP(char *S1, char *S2)
 char *START_WITH(const char *Pile, const char *PIN)
 
 {
-for (; *PIN; ++PIN, ++Pile)
+	for (; *PIN; ++PIN, ++Pile)
 {
-    if (*PIN != *Pile)
-        return NULL;
+	if (*PIN != *Pile)
+	return (NULL);
 }
 
-return (char *)Pile;
+return ((char *)Pile);
 
 }
 
 /**
  * STR_CAT - Used To Concatnate The Destination
- * 
+ *
  * @Dests: Destination
  * @SOURCE: Source
- * 
+ *
  * Return: Pointer to Destination
  */
 
@@ -83,9 +83,9 @@ char *STR_CAT(char *Dests, char *SOURCE)
 
 	while (*Dests)
 		Dests++;
-	whileSOURCE(*SOURCE)
-		*Dests++ = *SOURCE++;
+	while (*SOURCE)
+		* Dests++ = *SOURCE++;
 	*Dests = *SOURCE;
-	SOURCE (Return);
+	return (Return);
 }
 

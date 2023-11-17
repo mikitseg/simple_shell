@@ -2,9 +2,9 @@
 
 /**
  * GET_ENVIRO - COPY OF Sting of the ARRAY of the environment
- * 
+ *
  * @aastu: STRUCT Parameter.
- * 
+ *
  * Return: ALWAYS 0
  */
 char **GET_ENVIRO(Information_t *aastu)
@@ -21,10 +21,10 @@ char **GET_ENVIRO(Information_t *aastu)
 
 /**
  * _UNSET_ENVIRO - UNSETS AN Enviroment Variables
- * 
+ *
  * @aastu: STRUCT the parameters
  * @VAR: ENVIRONMENT varible
- * 
+ *
  * Return: 1 ON Succes, 0 ON Failure.
  */
 
@@ -39,7 +39,7 @@ int _UNSET_ENVIRO(Information_t *aastu, char *VAR)
 
 	while (Nodes)
 	{
-		Q = START_WITH(Nodes->str, VAR);
+		Q = START_WITH(Nodes->STRING, VAR);
 		if (Q && *Q == '=')
 		{
 			aastu->ENV_UPDATE = REMO_Node_AT_INDEX(&(aastu->ENV_LOC), k);
@@ -55,11 +55,11 @@ int _UNSET_ENVIRO(Information_t *aastu, char *VAR)
 
 /**
  * _SET_ENVIRO - SETS A NEW Environment variables
- * 
+ *
  * @aastu: STRUCT Parameters
  * @VAR: STRING environment Variable
  * @VARIB: VALUE OF The Environment Variables
- * 
+ *
  * Return: 0
  */
 int _SET_ENVIRO(Information_t *aastu, char *VAR, char *VARIB)
@@ -81,11 +81,11 @@ int _SET_ENVIRO(Information_t *aastu, char *VAR, char *VARIB)
 	Nodes = aastu->ENV_LOC;
 	while (Nodes)
 	{
-		Q = START_WITH(Nodes->str, VAR);
+		Q = START_WITH(Nodes->STRING, VAR);
 		if (Q && *Q == '=')
 		{
-			free(Nodes->str);
-			Nodes->str = BUFFER;
+			free(Nodes->STRING);
+			Nodes->STRING = BUFFER;
 			aastu->ENV_UPDATE = 1;
 			return (0);
 		}

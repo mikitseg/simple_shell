@@ -2,10 +2,10 @@
 
 /**
  * EXIT_COMMAND - A FUNCTION USED TO EXIST THE SHELL.
- * 
+ *
  * @Aastu: A STRUCT THAT CONTAINS POTENTIAL ARGUMENT,
  * for Maintaining constans Funtion Protype.
- * 
+ *
  * Return: EXIT WITH SPECIFIC EXIT STATUS
  * 0 if Aastu. argv[0] != "exit"
  */
@@ -19,7 +19,7 @@ int EXIT_COMMAND(Information_t *Aastu)
 		chk_exit = err_watoi(Aastu->argv[1]);
 		if (chk_exit == -1)
 		{
-			Aastu->STATUS = 2;
+			Aastu->stat = 2;
 			ERR_display(Aastu, "Illegal number: ");
 			W_PUTS(Aastu->argv[1]);
 			W_PUTchar('\n');
@@ -34,9 +34,10 @@ int EXIT_COMMAND(Information_t *Aastu)
 
 /**
  * CD - CHANGES the Current directory.
- * 
+ *
  * @Aastu: A STRUCT  THAT CONTAINS PPOTENTIAL ARGUMENTS,
  * FOR  maintaining constant FUNCTION prototypes.
+ *
  * Return: Always 0
  */
 int CD(Information_t *Aastu)
@@ -49,24 +50,24 @@ int CD(Information_t *Aastu)
 		W_PUTS("TODO: >>getcwd failure emsg here<<\n");
 	if (!Aastu->argv[1])
 	{
-		DIRK = GET_ENVIRO(Aastu, "HOME=");
+		DIRK = GET_ENVIROment(Aastu, "HOME=");
 		if (!DIRK)
 			CHECHDIR_RET = /* TODO: WHAT SHOULD THIS BE? */
-				chdir((DIRK = GET_ENVIRO(Aastu, "PWD=")) ? DIRK : "/");
+				chdir((DIRK = GET_ENVIROment(Aastu, "PWD=")) ? DIRK : "/");
 		else
 			CHECHDIR_RET = chdir(DIRK);
 	}
 	else if (STR_CMP(Aastu->argv[1], "-") == 0)
 	{
-		if (!GET_ENVIRO(Aastu, "OLDPWD="))
+		if (!GET_ENVIROment(Aastu, "OLDPWD="))
 		{
 			W_PUTS(G);
 			W_PUTchar('\n');
 			return (1);
 		}
-		W_PUTS(GET_ENVIRO(Aastu, "OLDPWD=")), W_PUTchar('\n');
+		W_PUTS(GET_ENVIROment(Aastu, "OLDPWD=")), W_PUTchar('\n');
 		CHECHDIR_RET = /* TODO: WHAT SHOULD THIS BE? */
-			chdir((DIRK = GET_ENVIRO(Aastu, "OLDPWD=")) ? DIRK : "/");
+			chdir((DIRK = GET_ENVIROment(Aastu, "OLDPWD=")) ? DIRK : "/");
 	}
 	else
 		CHECHDIR_RET = chdir(Aastu->argv[1]);
@@ -77,7 +78,7 @@ int CD(Information_t *Aastu)
 	}
 	else
 	{
-		_SET_ENVIRO(Aastu, "OLDPWD", GET_ENVIRO(Aastu, "PWD="));
+		_SET_ENVIRO(Aastu, "OLDPWD", GET_ENVIROment(Aastu, "PWD="));
 		_SET_ENVIRO(Aastu, "PWD", getcwd(BUFFER, 1024));
 	}
 	return (0);
@@ -85,9 +86,10 @@ int CD(Information_t *Aastu)
 
 /**
  * HELP - Provides Helps.
- * 
+ *
  * @Aastu: A Struct THAT CONTAINS potential argument,
  * FOR  Maintaining constant FUNCTION Prototype.
+ *
  * Return: ALWAYS 0
  */
 

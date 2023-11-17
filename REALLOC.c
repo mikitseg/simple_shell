@@ -2,11 +2,11 @@
 
 /**
  * Memset - THE function THAT FILL  MEMORY WITH CONSTANT BYTES
- * 
+ *
  * @Q: POINTER to the memory area
  * @BYTES: THE BYTE TO fill thed memory
  * @Amount: AMOUNT OF BYTEs to be filled
- * 
+ *
  * Return: RETURN the poninters to the memory area
  */
 char *Memset(char *Q, char BYTES, unsigned int Amount)
@@ -37,7 +37,7 @@ free(Q);
 
 /**
  * REALLOC - A FUCTION THAT reallocates blocks of memory
- * 
+ *
  * @pointer: REFERS TO THE previous block that mallocates
  * @PREV_SIZE: PREVIOUS BLOCK byte size
  * @NEW_SIZE: NEW BLOCK bytes size
@@ -69,6 +69,6 @@ void *REALLOC(void *pointer, unsigned int PREV_SIZE, unsigned int NEW_SIZE)
 	free(pointer);
 
 	return (Q);
-	
+
 }
 

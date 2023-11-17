@@ -127,7 +127,7 @@ int REMO_Node_AT_INDEX(list_t **Heads, unsigned int Endexs)
 	Nodes = *Heads;
 	while (Nodes)
 	{
-		if (B == Endexs)
+		if (Endexs == B)
 		{
 			LASTNODES->next = Nodes->next;
 			free(Nodes->STRING);

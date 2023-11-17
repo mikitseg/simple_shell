@@ -2,9 +2,9 @@
 
 /**
  * INFO_REMOVE - CLEARS information
- * 
+ *
  * @Aastu: ADDRESS struct
- * 
+ *
  * RETURN: Nothing
  */
 void INFO_REMOVE(Information_t *Aastu)
@@ -17,10 +17,10 @@ void INFO_REMOVE(Information_t *Aastu)
 
 /**
  * INFO_SET - SETS Information
- * 
+ *
  * @Aastu: ADDRESS struct
  * @AVG: REPRESENTS an argument vectors
- * 
+ *
  * RETURN: Nothing
  */
 
@@ -53,9 +53,9 @@ void INFO_SET(Information_t *Aastu, char **AVG)
 
 /**
  * INFO_FREE - IT Frees the Information
- * 
+ *
  * @Aastu: ADDRESS of the struct
- * 
+ *
  * @All: REPRESENT all The Field
  */
 void INFO_FREE(Information_t *Aastu, int All)

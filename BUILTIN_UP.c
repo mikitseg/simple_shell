@@ -6,9 +6,9 @@ int ALIAS_Sprint(list_t *NodeAli);
 
 /**
  * _Finst - Display The History List
- * 
+ *
  * @Aastd: a STRUCT That Contains Arguments
- * 
+ *
  * Return: ALWAYS 0
  */
 int _Finst(Information_t *Aastd)
@@ -19,7 +19,7 @@ int _Finst(Information_t *Aastd)
 
 /**
  * ALI_unset - It UNSETS ALIAS TO THE STRING
- * 
+ *
  * @Aastd: STRUCT Parameter
  * @STRING: Is The String Alias
  *
@@ -37,14 +37,15 @@ int ALI_unset(Information_t *Aastd, char *STRING)
 	K = *Q;
 	*Q = 0;
 	Returns = REMO_Node_AT_INDEX(&(Aastd->ALIAS),
-			RETRIEVE_NODE_AT_indexs(Aastd->ALIAS, _Nodes_bgin_WITH(Aastd->ALIAS, STRING, -1)));
+			RETRIEVE_NODE_AT_indexs(Aastd->ALIAS, _Nodes_bgin_WITH
+				(Aastd->ALIAS, STRING, -1)));
 	*Q = K;
 	return (Returns);
 }
 
 /**
  * ALIAS_Aset - it Sets Alias To Strings
- * 
+ *
  * @Aastd: its a STRUCT parameters
  * @STRING: its a STRING ALIAS
  *
@@ -70,7 +71,7 @@ int ALIAS_Aset(Information_t *Aastd, char *STRING)
 
 /**
  * ALIAS_Sprint - Prints An Alias String
- * 
+ *
  * @NodeAli: IT'S An Alias Node.
  *
  * Return: ALWAYS 0 ON SUCCESS , 1 ON ERROR
@@ -95,9 +96,9 @@ int ALIAS_Sprint(list_t *NodeAli)
 
 /**
  * _fALIAS - OPERATES AS THE ALIAS BUILTIN
- * 
+ *
  * @Aastd: STRUCT ParameterS
- * 
+ *
  * Return: ALWAYS 0
  */
 int _fALIAS(Information_t *Aastd)
