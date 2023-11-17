@@ -1,96 +1,91 @@
 #include "shell.h"
 
 /**
- * TOKEN_STR - BREAKS THE STRING s1 INTO TOKENS AND NULL-TERMINATES THEM 
- * DELIMITER-CHARACTERS AT THE BEGINNING AND END
- * OF STR ARE SKIPPED. ON EACH SUBSEQUENT CALL DELIM MAY CHANGE
+ * STR_LENG - determines the LENGTH of the STRING
+ * 
+ * @O: The STRINGS
  *
- * @STR: THE STRING TOKENIZE
- * @DELIMITERS: THE STRING WITH THE CHARECTER THAT DELIMIT STR
- *  
- * Return: THE FIRST OR NEXT TOKEN IF POSSIBLE, A NULL-POINTER OTHERWISE.
- **/
+ * Return: Length Of The String
+ */
 
-char *TOKEN_STR(char *STR, const char *DELIMITERS)
-
+int STR_LENG(char *O)
 {
-	static char *o;
+	int G = 0;
 
-	if (STR)
-		o = STR;
-	else if (!o)
+	if (!O)
 		return (0);
-	STR = o + STRSPN(o, DELIMITERS);
-	o = STR + STRCSPN(STR, DELIMITERS);
-	if (o == STR)
-		return (o = 0);
-	o = *o ? *o = 0, o + 1 : 0;
-	return (STR);
+
+	while (*O++)
+		G++;
+	return (G);
 }
 
 /**
- * STRCSPN - COMPUTES THE LENGTH O THE MAXIMUM INITIAL SGMENT OF THE
- * STRING POINTED TO BY S1 WHICH CONSISTS ENTIRELY OF CHARACTERS NOT FROM
- * THE STRING POINTED TO BY S2.
- *  
- * @strlen: STRING TO CHECK
- * @strle: STRING USEFUL TO COMPARE
+ * STR_CMP - Compares The Strings
+ * 
+ * @S1: First String
+ * @S2: Second String
  *
- * Return: THE LENGTH OF THE SEGMENT
- **/
+ * Return: Positive If The String is Greater, Negative
+ * If It is  LessThan, 0 If They are Equal.
+ */
 
-size_t STRCSPN(const char *strlen, const char *strle)
-
+int STR_CMP(char *S1, char *S2)
 {
-	size_t RAT = 0;
-
-	while (*strlen)
+	while (*S1 && *S2)
 	{
-		if (STRCHAR(strle, *strlen))
-			return (RAT);
-		strlen++, RAT++;
+		if (*S1 != *S2)
+			return (*S1 - *S2);
+		S1++;
+		S2++;
 	}
-	return (RAT);
+
+	if (*S1 == *S2)
+		return (0);
+	else
+		return (*S1 < *S2 ? -1 : 1);
 }
 
 /**
- * STRSPN - COMPUTE THE LENGTH OF THE MAXIMUM INITIAL SEGMENT OF THE STRING
- * POINTED TO BY S1 WHICH CONSIST ENTIRELY OF THE CHARACTERS FROM THE
- * STRING POINTED TO BY S2
- *  
- * @strlen: STRINGINT TO COMPUTE THE LENGTH
- * @strle: STRING DELIMIT
+ * START_WITH - CHECKS IF PIN STARTS WITH Pile
  * 
- * Return: THE LENGTH OF THE SEGEMENT 
- **/
+ * @Pile: THE string
+ * @PIN: Substring to Find
+ *
+ * Return: Address of The Next char In The Pile, Otherwise NULL
+ */
 
-size_t STRSPN(const char *strlen, const char *strle)
+char *START_WITH(const char *Pile, const char *PIN)
 
 {
-	size_t RAT = 0;
+for (; *PIN; ++PIN, ++Pile)
+{
+    if (*PIN != *Pile)
+        return NULL;
+}
 
-	while (*strlen && STRCHAR(strle, *strlen++))
-		RAT++;
-	return (RAT);
+return (char *)Pile;
+
 }
 
 /**
- * STRCHAR - LOCATES THE FIRST OCCURANCE OF THE t CONVERTED TO char IN THE
- * STRING POINTED TO BY q. THE TERMINATING NULL CHARACTER IS CONSIDERED TO BE
- * PART OF THE STRING
- *  
- * @q: STRING
- * @t: CHARACTER
+ * STR_CAT - Used To Concatnate The Destination
  * 
- * Return: A POINTER TO THE LOCATED CHARACTER, OR A NULL POINTER
- * IF THE CHARACTER DOES NOT OCCUR IN THE STRING. 
- **/
+ * @Dests: Destination
+ * @SOURCE: Source
+ * 
+ * Return: Pointer to Destination
+ */
 
-char *STRCHAR(const char *q, int t)
-
+char *STR_CAT(char *Dests, char *SOURCE)
 {
-	while (*q != (char)t)
-		if (!*q++)
-			return (0);
-	return ((char *)q);
+	char *Return = Dests;
+
+	while (*Dests)
+		Dests++;
+	whileSOURCE(*SOURCE)
+		*Dests++ = *SOURCE++;
+	*Dests = *SOURCE;
+	SOURCE (Return);
 }
+

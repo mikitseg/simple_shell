@@ -1,119 +1,95 @@
 #include "shell.h"
 
 /**
- *STRNCAT_S - COPY STRINGS TO ANOTHEER STRINGS.
+ * STR_CPY - A Function That Copies A String
+ * 
+ * @Dests: Destination
+ * @SOURCE: Soources
  *
- *@DRIVE: characters
- *@SRC: characters
- *
- *Return: DRIVE
+ * Return: pointer Of The Destination
  */
-
-char *STRNCAT_S(char *DRIVE, char *SRC)
+char *STR_CPY(char *Dests, char *SOURCE)
 {
-	int S = 0;
-	int T = 0;
+	int k = 0;
 
-	while (DRIVE[S] != '\0')
+	if (Dests == SOURCE || 0 == SOURCE)
+		return (Dests);
+	while (SOURCE[k])
 	{
-		S++;
+		Dests[k] = SOURCE[k];
+		k++;
 	}
-	while (SRC[T] != '\0')
-	{
-		DRIVE[S] = SRC[T];
-		S++;
-		T++;
-	}
-	DRIVE[S] = '\0';
-	return (DRIVE);
+	Dests[k] = 0;
+	return (Dests);
 }
 
 /**
- * STRCOMP - COMPARE THE VALUES OF G STRING
+ * STR_DUP - Duplicates The Strings
+ * 
+ * @STR_replace: Strings
  *
- * @strlen: CHARACTER
- * @strle: CHARACTER
- *
- * Return: 0
+ * Return: Pointer To Duplicates The String
  */
 
-int STRCOMP(char *strlen, char *strle)
-
+char *STR_DUP(const char *STR_replace)
 {
-	int G;
+	char *Returns;
+	int Leng = 0;
 
-	for (G = 0; strlen[G] != '\0' && strle[G] != '\0'; G++)
-	{
-		if (strlen[G] != strle[G])
-			return ((int)strlen[G] - strle[G]);
-	}
-	return (0);
+	if (STR_replace == NULL)
+		return (NULL);
+	while (*STR_replace++)
+		Leng++;
+	Returns = malloc(sizeof(char) * (Leng + 1));
+	if (!Returns)
+		return (NULL);
+	for (Leng++; Leng--;)
+		Returns[Leng] = *--STR_replace;
+	return (Returns);
 }
 
 /**
- * STRLENG - COPIES THE STRING PINTED TO BY BY SRC INTO DRIVE
+ * W_PUTS - Prints The String
+ * 
+ * @STR_replace: String
  *
- * @T: A POINTER
- *
- * Return: CHAR POINTER TO THE DRIVE
+ * Return: Void
  */
 
-int STRLENG(char *T)
+void W_PUTS(char *STR_replace)
 {
-	int QW = 0;
+	int k = 0;
 
-	while (*(T + QW) != '\0')
+	if (!STR_replace)
+		return;
+
+	while (STR_replace[k] != '\0')
 	{
-		QW++;
+		W_PUTchar(STR_replace[k]);
+		k++;
 	}
-
-	return (QW);
 }
 
 /**
- *STRNCMP -  FUNCTION THAT COMPARES THE TWO STRINGS.
- *@strlen: STRING ONE
- *@strle: STRING TWO
- *@z: NUMBERS OF THE CHARACTERS
- * Return: THE DIFERENCE
+ * W_PUTchar - Prints The Character To STDOUT
+ * 
+ * @O: The Characters
+ *
+ * Return: 1 On Success , 0 On Failure
  */
 
-size_t STRNCMP(char *strlen, char *strle, size_t z)
+int W_PUTchar(char O)
 {
-	size_t w, Q;
+	static char BUFFER[1024];
+	static int k;
 
-	for (Q = 0; strlen[Q] != '\0' && Q < z; Q++)
+	if (O == -1 || k >= 1024)
 	{
-		w = strlen[Q] - strle[Q];
-
-		if (w != 0)
-		{
-			return (w);
-		}
+		write(1, BUFFER, k);
+		k = 0;
 	}
-	return (0);
+
+	if (O != -1)
+		BUFFER[k++] = O;
+	return (1);
 }
-
-/**
- * COPY_STR - COPIES THE STRING POINTED TO BY SRC INTO DRIVE
- *
- * @DRIVE: THE DESTINATION OF THE FILE
- * @SRC: SOURCES OF THE COPY
- *
- * Return: CHAR POINTERS TO  DRIVE
- */
-
-char *COPY_STR(char *DRIVE, char *SRC)
-{
-	int w = 0;
-
-	while (*(SRC + w) != '\0')
-	{
-		*(DRIVE + w) = *(SRC + w);
-		++w;
-	}
-	*(DRIVE + w) = *(SRC + w);
-
-	return (DRIVE);
-}
-
